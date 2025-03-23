@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版本歷史 - Image2pixel 幫助</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel 標誌">
+                <h1>Image2pixel 幫助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="index.html">文檔</a></li>
+                    <li><a href="basics/faq.html">常見問題</a></li>
+                    <li><a href="basics/quick-reference.html">快速參考</a></li>
+                    <li><a href="version-history.html">版本歷史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="選擇語言">
+                    <option value="en">English</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="zh-TW" selected>繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文檔...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+      
+
+        <main class="content">
+            <h1>版本歷史</h1>
+            
+            <div class="version">
+                <h2>v1.3.2</h2>
+                <ul>
+                    <li>添加了對 GIF 和圖像中透明背景的支持</li>
+                    <li>改進了所有像素化算法中對 Alpha 通道的處理</li>
+                    <li>增強了對具有透明度的圖像的圖像質量保存</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.3.1</h2>
+                <ul>
+                    <li>優化了加載進度指示器，僅對需時超過 2 秒的操作顯示</li>
+                    <li>通過減少快速操作的 UI 閃爍，改善了用戶體驗</li>
+                    <li>增強了圖像處理操作的性能</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.3.0</h2>
+                <ul>
+                    <li>添加了 SLIC（簡單線性迭代聚類）算法，用於基於超像素的像素藝術生成</li>
+                    <li>改進了帶有 Toast 通知的錯誤處理</li>
+                    <li>增強了算法參數管理</li>
+                    <li>為 SLIC 算法添加了全面的文檔</li>
+                    <li>更新了許可信息</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.2.0</h2>
+                <ul>
+                    <li>添加了自定義顏色調色板導入（支持 .act 和 .pal 格式）</li>
+                    <li>改進了顏色調色板管理</li>
+                    <li>增強了用戶界面</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.1.2</h2>
+                <ul>
+                    <li>添加了鍵盤快捷鍵（Cmd+O/Ctrl+O 打開，Cmd+S/Ctrl+S 保存）</li>
+                    <li>添加了用戶指南</li>
+                    <li>改進了版本管理</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.1.1</h2>
+                <ul>
+                    <li>改進了帶有時間戳格式的文件保存</li>
+                    <li>添加了 CJK 字體支持</li>
+                    <li>優化了界面語言支持</li>
+                    <li>修復了 GIF 處理問題</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.1.0</h2>
+                <ul>
+                    <li>添加了 GIF 動畫支持</li>
+                    <li>添加了 GIF 到像素藝術的轉換</li>
+                    <li>改進了顏色量化算法</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h2>v1.0.0</h2>
+                <ul>
+                    <li>初始發布</li>
+                    <li>基本的圖像到像素藝術轉換</li>
+                    <li>顏色調色板優化</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>鏈接</h3>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">錯誤報告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社區</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社區</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文檔</h3>
+                <ul>
+                    <li><a href="basics/quick-reference.html">快速參考</a></li>
+                    <li><a href="basics/faq.html">常見問題</a></li>
+                    <li><a href="basics/tutorial.html">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒體</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有權利。</p>
+        </div>
+    </footer>
+</body>
+</html> 

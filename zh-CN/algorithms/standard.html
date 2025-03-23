@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标准算法 - Image2pixel 帮助</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <script defer src="../../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../../images/logo.png" alt="Image2pixel 标志">
+                <h1>Image2pixel 帮助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">文档</a></li>
+                    <li><a href="../basics/faq.html">常见问题</a></li>
+                    <li><a href="../basics/quick-reference.html">快速参考</a></li>
+                    <li><a href="../version-history.html">版本历史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="选择语言">
+                    <option value="en">English</option>
+                    <option value="zh-CN" selected>简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文档...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+       
+
+        <main class="content">
+            <h1>标准算法</h1>
+            
+            <p>标准算法是 Image2pixel 中的默认像素化算法。它结合了下采样和颜色量化技术，从任何图像生成经典的像素艺术。</p>
+            
+            <h2>工作原理</h2>
+            
+            <p>标准算法分为两个主要步骤：</p>
+            
+            <ol>
+                <li><strong>下采样（像素化）</strong>：原始图像根据所选的块大小被划分成像素块。然后，每个块都被替换为由该块内所有像素平均颜色确定的单一颜色。</li>
+                <li><strong>颜色量化</strong>：算法使用中值切分算法将图像中的颜色数量减少到与所选颜色数量匹配，确保保留最重要的颜色。</li>
+            </ol>
+            
+            <p>这种方法创建了具有统一、块状像素和有限颜色调色板的经典像素艺术外观。</p>
+            
+            <h2>参数</h2>
+            
+            <h3>块大小</h3>
+            <p>块大小参数控制输出图像中每个像素的大小。较大的值会创建更加像素化、块状的外观，但细节较少，而较小的值会保留更多细节，但像素艺术的特征不太明显。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>值</th>
+                        <th>效果</th>
+                        <th>最适合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-4</td>
+                        <td>轻微像素化，高细节保留</td>
+                        <td>详细的精灵，复杂的纹理</td>
+                    </tr>
+                    <tr>
+                        <td>5-12</td>
+                        <td>中等像素化，细节和像素艺术风格的良好平衡</td>
+                        <td>大多数像素艺术，游戏资源</td>
+                    </tr>
+                    <tr>
+                        <td>13-32</td>
+                        <td>强烈像素化，高度风格化的外观</td>
+                        <td>低分辨率风格，复古效果</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>颜色</h3>
+            <p>颜色参数确定输出图像中的最大颜色数量。这会影响像素艺术的色彩深度和视觉复杂性。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>值</th>
+                        <th>效果</th>
+                        <th>最适合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2-8</td>
+                        <td>高度有限的颜色调色板，高对比度</td>
+                        <td>1位或3位风格像素艺术，Game Boy风格作品</td>
+                    </tr>
+                    <tr>
+                        <td>9-32</td>
+                        <td>适中的颜色调色板，简单性和色彩深度的良好平衡</td>
+                        <td>16色控制台风格，SNES时代像素艺术</td>
+                    </tr>
+                    <tr>
+                        <td>33-96</td>
+                        <td>丰富的颜色调色板，保持更多颜色细微差别</td>
+                        <td>详细的像素艺术，更现代的像素艺术风格</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>颜色量化</h2>
+            
+            <p>标准算法使用中值切分颜色量化来减少图像中的颜色数量。该算法的工作原理是：</p>
+            
+            <ol>
+                <li>创建图像中所有颜色的3D直方图（在RGB颜色空间中）</li>
+                <li>沿着范围最大的轴递归地分割颜色空间，直到达到所需的颜色桶数量</li>
+                <li>计算每个桶的平均颜色以创建最终的颜色调色板</li>
+                <li>将每个像素映射到调色板中最接近的颜色</li>
+            </ol>
+            
+            <p>这种方法确保了图像中最常见和视觉上最重要的颜色得以保留，而相似的颜色则被合并在一起。</p>
+            
+            <h2>透明度支持</h2>
+            
+            <p>从版本1.3.2开始，标准算法完全支持图像和GIF中的透明度。输入中的透明像素在处理过程中得以保留，使您能够创建具有透明背景或部分透明元素的像素艺术。</p>
+            
+            <p>该算法检测alpha值低于10（在0-255的比例上）的像素，并将它们视为完全透明，在整个像素化和颜色量化过程中保留它们。</p>
+            
+            <h2>使用示例</h2>
+            
+            <h3>创建经典像素艺术角色</h3>
+            <p>对于角色精灵和头像，尝试以下设置：</p>
+            <ul>
+                <li>块大小：8-12</li>
+                <li>颜色：16-24</li>
+            </ul>
+            
+            <h3>创建8位风格景观</h3>
+            <p>对于复古风格的景观和背景：</p>
+            <ul>
+                <li>块大小：6-10</li>
+                <li>颜色：12-20</li>
+            </ul>
+            
+            <h3>创建极简图标</h3>
+            <p>对于简单、易识别的图标：</p>
+            <ul>
+                <li>块大小：4-8</li>
+                <li>颜色：4-8</li>
+            </ul>
+            
+            <h2>与SLIC算法的比较</h2>
+            
+            <p>标准算法在几个关键方面与SLIC算法不同：</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>特点</th>
+                        <th>标准算法</th>
+                        <th>SLIC算法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>像素形状</td>
+                        <td>统一的基于网格的正方形</td>
+                        <td>不规则的、内容感知的形状</td>
+                    </tr>
+                    <tr>
+                        <td>细节保留</td>
+                        <td>图像全局统一</td>
+                        <td>基于图像内容自适应</td>
+                    </tr>
+                    <tr>
+                        <td>参数复杂性</td>
+                        <td>简单（2个参数）</td>
+                        <td>更复杂（5个参数）</td>
+                    </tr>
+                    <tr>
+                        <td>处理速度</td>
+                        <td>更快</td>
+                        <td>更慢（尤其是在较高迭代次数时）</td>
+                    </tr>
+                    <tr>
+                        <td>最适合</td>
+                        <td>经典像素艺术，复古游戏美学</td>
+                        <td>现代像素艺术，风格化抽象，复杂场景</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>获得最佳结果的提示</h2>
+            
+            <ul>
+                <li><strong>从简单图像开始</strong>：具有清晰形状和高对比度的图像通常会产生更好的像素艺术结果。</li>
+                <li><strong>尝试不同的块大小</strong>：块大小对像素艺术的外观有最显著的影响。尝试不同的值以找到合适的细节级别。</li>
+                <li><strong>根据内容调整颜色</strong>：具有多种不同颜色的图像可能需要更高的颜色数量才能看起来好看，而更简单的图像通常使用较少的颜色效果更好。</li>
+                <li><strong>考虑目标用途</strong>：如果您的像素艺术是为具有特定技术限制的游戏或应用程序准备的，请相应地调整您的设置。</li>
+                <li><strong>使用自定义调色板</strong>：要更好地控制最终外观，请考虑使用自定义颜色调色板，以确保您的像素艺术符合特定的美学风格。</li>
+            </ul>
+            
+            <p>有关更高级的自定义选项，请参阅<a href="color-palettes.html">颜色调色板</a>文档。</p>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>链接</h3>
+                <ul>
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">错误报告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社区</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社区</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文档</h3>
+                <ul>
+                    <li><a href="../basics/quick-reference.html">快速参考</a></li>
+                    <li><a href="../basics/faq.html">常见问题</a></li>
+                    <li><a href="../basics/tutorial.html">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒体</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+</html> 

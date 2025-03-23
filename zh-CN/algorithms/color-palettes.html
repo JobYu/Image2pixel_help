@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜色调色板 - Image2pixel 帮助</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <script defer src="../../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../../images/logo.png" alt="Image2pixel 标志">
+                <h1>Image2pixel 帮助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">文档</a></li>
+                    <li><a href="../basics/faq.html">常见问题</a></li>
+                    <li><a href="../basics/quick-reference.html">快速参考</a></li>
+                    <li><a href="../version-history.html">版本历史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="选择语言">
+                    <option value="en">English</option>
+                    <option value="zh-CN" selected>简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文档...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>目录</h3>
+            <ul class="toc">
+                <li><a href="../index.html">概述</a></li>
+                <li>
+                    <span class="category">基础</span>
+                </li>
+                <li>
+                    <span class="category">图像处理</span>
+                </li>
+                <li>
+                    <span class="category">动画</span>
+                </li>
+                <li>
+                    <span class="category">算法</span>
+                    <ul>
+                        <li><a href="standard.html">标准算法</a></li>
+                        <li><a href="slic.html">SLIC算法</a></li>
+                        <li><a href="color-palettes.html">颜色调色板</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">自定义</span>
+                </li>
+                <li>
+                    <span class="category">故障排除</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">错误报告</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>颜色调色板</h1>
+            
+            <p>颜色调色板对于创建真实的像素艺术至关重要。Image2pixel 提供了各种方式来控制和自定义像素艺术中的颜色，从自动颜色量化到使用预定义的复古调色板。</p>
+            
+            <h2>理解颜色调色板</h2>
+            
+            <p>颜色调色板是像素艺术中使用的一组特定颜色。有限的颜色调色板是像素艺术的一个显著特征，让人想起早期游戏系统的硬件限制。使用精心设计的颜色调色板可以：</p>
+            
+            <ul>
+                <li>创建协调一致的像素艺术</li>
+                <li>模拟特定的复古游戏系统或美学风格</li>
+                <li>减小网页或游戏资源的文件大小</li>
+                <li>施加艺术约束，促使更具创造性的解决方案</li>
+            </ul>
+            
+            <h2>颜色量化方法</h2>
+            
+            <h3>中位切分法（默认）</h3>
+            <p>Image2pixel 中的默认颜色量化方法是中位切分法，其工作原理为：</p>
+            <ol>
+                <li>创建图像中所有颜色的 3D 直方图（在 RGB 颜色空间中）</li>
+                <li>沿着范围最大的轴递归地分割颜色空间，直到达到所需的颜色桶数量</li>
+                <li>计算每个桶的平均颜色，创建最终的颜色调色板</li>
+            </ol>
+            <p>这种方法确保了图像中最常见和视觉上最重要的颜色得到保留。</p>
+            
+            <h3>K-均值法</h3>
+            <p>K-均值量化选项使用聚类分析找到最能代表图像的颜色中心。它通常能产生更准确的颜色表示，但计算速度可能较慢。它对于具有微妙渐变的图像特别有用。</p>
+            
+            <h2>自定义调色板</h2>
+            
+            <h3>导入自定义调色板</h3>
+            <p>您可以将自己的自定义颜色调色板导入到 Image2pixel 中。支持的格式包括：</p>
+            <ul>
+                <li><strong>Adobe 颜色表 (.act)</strong> - 由 Photoshop 和其他 Adobe 产品使用</li>
+            </ul>
+            
+            <p>导入自定义调色板的步骤：</p>
+            <ol>
+                <li>转到"颜色"面板</li>
+                <li>点击"导入调色板"</li>
+                <li>选择您的调色板文件</li>
+                <li>如果提示，为您的调色板命名</li>
+            </ol>
+            
+            <h3>像素艺术的色彩理论</h3>
+            <p>创建像素艺术的自定义调色板时，请考虑以下原则：</p>
+            <ul>
+                <li><strong>有限范围</strong> - 真实的像素艺术通常使用的颜色比您认为必要的要少</li>
+                <li><strong>一致的饱和度</strong> - 饱和度水平相似的颜色能很好地配合在一起</li>
+                <li><strong>色彩和谐</strong> - 考虑互补、相似或三元色彩方案</li>
+                <li><strong>对比度</strong> - 确保相邻元素之间有足够的对比度</li>
+                <li><strong>可读性</strong> - 对于游戏精灵尤为重要，因为清晰度至关重要</li>
+            </ul>
+            
+            <h2>示例工作流程</h2>
+            
+            <h3>创建 GameBoy 风格的艺术</h3>
+            <ol>
+                <li>从预设选项中选择 GameBoy 调色板</li>
+                <li>将块大小设置为 2-4 以获得更高分辨率的 GameBoy 风格，或 8-12 以获得更粗大的像素</li>
+                <li>处理您的图像</li>
+                <li>考虑启用抖动以获得更平滑的过渡</li>
+            </ol>
+            
+            <h3>创建现代像素艺术</h3>
+            <ol>
+                <li>创建一个包含 12-20 种精心选择的颜色的自定义调色板</li>
+                <li>包含适当的颜色渐变以进行阴影处理</li>
+                <li>使用小块大小（2-4）以获得详细的像素艺术</li>
+                <li>处理您的图像</li>
+                <li>考虑对关键细节进行手动修饰</li>
+            </ol>
+            
+            <h3>重现 16 位游戏机风格</h3>
+            <ol>
+                <li>选择 16 位时代的调色板，如 SNES 或 Genesis</li>
+                <li>使用 32-64 种颜色以获得更丰富的图形</li>
+                <li>根据所需的细节水平将块大小设置为 2-6</li>
+                <li>处理您的图像</li>
+                <li>考虑对渐变使用轻微的抖动</li>
+            </ol>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>链接</h3>
+                <ul>
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">错误报告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社区</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社区</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文档</h3>
+                <ul>
+                    <li><a href="../basics/quick-reference.html">快速参考</a></li>
+                    <li><a href="../basics/faq.html">常见问题</a></li>
+                    <li><a href="../basics/tutorial.html">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒体</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+</html> 

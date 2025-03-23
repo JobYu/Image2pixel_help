@@ -26,7 +26,141 @@ document.addEventListener('DOMContentLoaded', function() {
             hljs.highlightBlock(block);
         });
     }
+    
+    // Setup language switcher
+    setupLanguageSwitcher();
 });
+
+// Function to setup language switcher
+function setupLanguageSwitcher() {
+    const languageSwitcher = document.getElementById('language-switcher');
+    if (languageSwitcher) {
+        languageSwitcher.addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            switchLanguage(selectedLanguage);
+        });
+        
+        // Set initial language based on URL or browser preference
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        const currentPath = window.location.pathname;
+        
+        // Set appropriate language based on path or parameter
+        if (currentPath.includes('/zh-CN/')) {
+            languageSwitcher.value = 'zh-CN';
+        } else if (currentPath.includes('/zh-TW/')) {
+            languageSwitcher.value = 'zh-TW';
+        } else if (langParam) {
+            languageSwitcher.value = langParam;
+        } else {
+            // Default to English if no language indicators present
+            languageSwitcher.value = 'en';
+        }
+    }
+}
+
+// Function to switch language
+function switchLanguage(language) {
+    // Get current path
+    const currentPath = window.location.pathname;
+    const currentFileName = currentPath.split('/').pop() || 'index.html';
+    const isFileProtocol = window.location.protocol === 'file:';
+    
+    // Determine target path based on language
+    let targetPath;
+    
+    if (language === 'en') {
+        // If switching to English, go to the root path
+        if (currentPath.includes('/zh-CN/') || currentPath.includes('/zh-TW/')) {
+            if (isFileProtocol) {
+                // For file:// protocol, construct the absolute path
+                // Get the base path by removing the language directory and anything after it
+                const basePath = currentPath.split(/\/zh-(CN|TW)\//)[0];
+                targetPath = `${basePath}/index.html`;
+            } else {
+                // For Chinese to English with http protocol
+                // Get the base directory structure
+                const currentPathParts = currentPath.split('/');
+                // Find the index of the zh-CN or zh-TW part
+                const langIndex = currentPathParts.findIndex(part => part === 'zh-CN' || part === 'zh-TW');
+                
+                if (langIndex !== -1) {
+                    // Remove the language part and everything before it
+                    // Keep everything after it
+                    const pathAfterLang = currentPathParts.slice(langIndex + 1).join('/');
+                    
+                    // If we're at the main page of a language
+                    if (pathAfterLang === '' || pathAfterLang === 'index.html') {
+                        // Go to the main English page
+                        targetPath = '/';
+                    } else {
+                        // Go to the corresponding English page
+                        targetPath = '/' + pathAfterLang;
+                    }
+                } else {
+                    // Default to the homepage if the path structure is unexpected
+                    targetPath = '/';
+                }
+            }
+        } else {
+            // Already on an English page
+            targetPath = currentPath;
+        }
+    } else {
+        // If switching to Chinese (Simplified or Traditional)
+        if (currentPath.includes('/zh-CN/') || currentPath.includes('/zh-TW/')) {
+            // Already in a language folder, just change language code
+            targetPath = currentPath.replace(/\/(zh-CN|zh-TW)\//, '/' + language + '/');
+        } else {
+            if (isFileProtocol) {
+                // For file:// protocol, construct the absolute path
+                // Get the base directory
+                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+                targetPath = `${basePath}/${language}/index.html`;
+            } else {
+                // In the root directory with http protocol, add language prefix
+                // Check if we're at the site root or a page in the root
+                if (currentPath === '/' || currentPath === '' || currentFileName === 'index.html') {
+                    // Main index page
+                    targetPath = '/' + language + '/index.html';
+                } else {
+                    // For other pages in root, we need to handle both possibilities:
+                    // 1. The site is at the domain root (e.g., example.com/page.html)
+                    // 2. The site is in a subdirectory (e.g., example.com/docs/page.html)
+                    
+                    // First ensure we're working with a path without leading slash
+                    let cleanPath = currentPath;
+                    if (cleanPath.startsWith('/')) {
+                        cleanPath = cleanPath.substring(1);
+                    }
+                    
+                    targetPath = '/' + language + '/' + cleanPath;
+                }
+            }
+        }
+    }
+    
+    // Fix double slashes if any (except for the protocol part)
+    targetPath = targetPath.replace(/([^:])\/+/g, '$1/');
+    
+    // If targetPath is empty, default to root
+    if (!targetPath || targetPath === '') {
+        targetPath = '/';
+    }
+    
+    // Add language parameter to URL
+    let url;
+    if (isFileProtocol) {
+        // For file:// URLs we need to construct the URL differently
+        url = new URL(targetPath, window.location.href);
+    } else {
+        url = new URL(targetPath, window.location.origin);
+    }
+    url.searchParams.set('lang', language);
+    
+    // Navigate to the new URL
+    window.location.href = url.toString();
+}
 
 // Function to perform search
 function performSearch() {

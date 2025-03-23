@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIC算法 - Image2pixel 帮助</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <script defer src="../../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../../images/logo.png" alt="Image2pixel 标志">
+                <h1>Image2pixel 帮助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">文档</a></li>
+                    <li><a href="../basics/faq.html">常见问题</a></li>
+                    <li><a href="../basics/quick-reference.html">快速参考</a></li>
+                    <li><a href="../version-history.html">版本历史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="选择语言">
+                    <option value="en">English</option>
+                    <option value="zh-CN" selected>简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文档...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>目录</h3>
+            <ul class="toc">
+                <li><a href="../index.html">概述</a></li>
+                <li>
+                    <span class="category">基础</span>
+                </li>
+                <li>
+                    <span class="category">图像处理</span>
+                </li>
+                <li>
+                    <span class="category">动画</span>
+                </li>
+                <li>
+                    <span class="category">算法</span>
+                    <ul>
+                        <li><a href="standard.html">标准算法</a></li>
+                        <li><a href="slic.html">SLIC算法</a></li>
+                        <li><a href="color-palettes.html">颜色调色板</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">自定义</span>
+                </li>
+                <li>
+                    <span class="category">故障排除</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">错误报告</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>SLIC算法</h1>
+            
+            <p>SLIC（简单线性迭代聚类）算法是 Image2pixel 中的一种高级像素化算法，用于创建内容感知的像素艺术。与创建统一基于网格的像素的标准算法不同，SLIC 生成有机的、尊重形状的像素簇。</p>
+            
+            <h2>工作原理</h2>
+            
+            <p>SLIC 算法通过以下主要步骤工作：</p>
+            
+            <ol>
+                <li><strong>超像素生成</strong>：算法将图像分割成不规则形状的"超像素"，这些超像素遵循图像中的自然边界。</li>
+                <li><strong>迭代优化</strong>：对超像素进行迭代优化，使其更好地匹配图像内容。</li>
+                <li><strong>颜色分配</strong>：根据每个超像素内的像素为其分配一个代表性颜色。</li>
+                <li><strong>颜色量化</strong>：使用加权颜色平均技术将颜色数量减少到与所选颜色数量匹配。</li>
+            </ol>
+            
+            <p>结果是一种风格化的、内容感知的像素艺术，既保留了重要的图像特征，又创建了独特的像素艺术风格。</p>
+            
+            <h2>参数</h2>
+            
+            <h3>区域大小</h3>
+            <p>控制每个超像素区域的近似大小。较大的值会创建更大、更块状的区域，而较小的值会创建更详细的超像素。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>值</th>
+                        <th>效果</th>
+                        <th>最适合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5-15</td>
+                        <td>小超像素，高细节保留</td>
+                        <td>详细艺术，复杂场景</td>
+                    </tr>
+                    <tr>
+                        <td>16-30</td>
+                        <td>中等超像素，良好平衡</td>
+                        <td>一般像素艺术，人像</td>
+                    </tr>
+                    <tr>
+                        <td>31-50</td>
+                        <td>大超像素，抽象外观</td>
+                        <td>风格化艺术，抽象效果</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>紧凑度</h3>
+            <p>控制算法在多大程度上优先考虑规则形状与遵循颜色边界之间的平衡。较高的值会创建更统一的超像素，而较低的值会创建更好地跟随图像特征的超像素。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>值</th>
+                        <th>效果</th>
+                        <th>最适合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-10</td>
+                        <td>高度不规则形状，强烈特征依附性</td>
+                        <td>具有明显边缘和特征的图像</td>
+                    </tr>
+                    <tr>
+                        <td>11-30</td>
+                        <td>平衡的形状规则性</td>
+                        <td>大多数图像，通用目的</td>
+                    </tr>
+                    <tr>
+                        <td>31-50</td>
+                        <td>更统一，类似网格的超像素</td>
+                        <td>创建更传统的像素艺术外观</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>迭代次数</h3>
+            <p>控制算法执行的优化次数。更多的迭代会产生更精确的超像素，但会增加处理时间。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>值</th>
+                        <th>效果</th>
+                        <th>处理速度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-3</td>
+                        <td>快速近似，优化程度较低的超像素</td>
+                        <td>快速</td>
+                    </tr>
+                    <tr>
+                        <td>4-7</td>
+                        <td>平衡优化</td>
+                        <td>中等</td>
+                    </tr>
+                    <tr>
+                        <td>8-10</td>
+                        <td>高度优化的超像素</td>
+                        <td>慢速</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>颜色</h3>
+            <p>确定输出图像中的最大颜色数量。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>值</th>
+                        <th>效果</th>
+                        <th>最适合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2-8</td>
+                        <td>高度有限的颜色调色板</td>
+                        <td>简单，具有标志性的像素艺术</td>
+                    </tr>
+                    <tr>
+                        <td>9-32</td>
+                        <td>适中的颜色调色板</td>
+                        <td>具有良好颜色多样性的平衡像素艺术</td>
+                    </tr>
+                    <tr>
+                        <td>33-96</td>
+                        <td>丰富的颜色调色板</td>
+                        <td>复杂场景，渐变，详细像素艺术</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>透明度支持</h2>
+            
+            <p>SLIC 算法支持图像中的透明度。原始图像中的透明区域在处理后的结果中将保持透明，使其适合创建带有透明背景的像素艺术精灵和资源。</p>
+            
+            <h2>使用示例</h2>
+            
+            <h3>创建有机外观的像素艺术</h3>
+            <p>对于自然外观的风景和有机主题：</p>
+            <ul>
+                <li>区域大小：20-25</li>
+                <li>紧凑度：15</li>
+                <li>迭代次数：5</li>
+                <li>颜色：24-32</li>
+            </ul>
+            
+            <h3>创建抽象像素艺术</h3>
+            <p>对于风格化、抽象的像素艺术：</p>
+            <ul>
+                <li>区域大小：35-45</li>
+                <li>紧凑度：5</li>
+                <li>迭代次数：8</li>
+                <li>颜色：12-16</li>
+            </ul>
+            
+            <h3>创建详细的人物肖像</h3>
+            <p>对于具有良好细节保留的人物肖像：</p>
+            <ul>
+                <li>区域大小：10-15</li>
+                <li>紧凑度：20</li>
+                <li>迭代次数：6</li>
+                <li>颜色：24-48</li>
+            </ul>
+            
+            <h2>与标准算法的比较</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>特点</th>
+                        <th>SLIC算法</th>
+                        <th>标准算法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>像素形状</td>
+                        <td>不规则，内容感知的形状</td>
+                        <td>统一的基于网格的正方形</td>
+                    </tr>
+                    <tr>
+                        <td>细节保留</td>
+                        <td>基于图像内容自适应</td>
+                        <td>图像全局统一</td>
+                    </tr>
+                    <tr>
+                        <td>边缘保留</td>
+                        <td>更好地保留重要边缘</td>
+                        <td>在高对比度区域可能丢失边缘细节</td>
+                    </tr>
+                    <tr>
+                        <td>参数复杂性</td>
+                        <td>更复杂（4个参数）</td>
+                        <td>简单（2个参数）</td>
+                    </tr>
+                    <tr>
+                        <td>处理速度</td>
+                        <td>更慢（尤其是在较高迭代次数时）</td>
+                        <td>更快</td>
+                    </tr>
+                    <tr>
+                        <td>最适合</td>
+                        <td>艺术性像素艺术，有机主题</td>
+                        <td>经典像素艺术，游戏精灵</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>获得最佳结果的提示</h2>
+            
+            <ul>
+                <li>以区域大小为20，紧凑度为20，迭代次数为5作为基准开始。</li>
+                <li>减小区域大小以获得更多细节，增加以获得更抽象的外观。</li>
+                <li>减小紧凑度以获得更不规则、更有机的形状，这些形状遵循颜色边界。</li>
+                <li>增加迭代次数以获得更精细的结果，但要注意会增加处理时间。</li>
+                <li>尝试将SLIC处理的图像与标准算法结果结合，以获得有趣的混合效果。</li>
+            </ul>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>链接</h3>
+                <ul>
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">错误报告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社区</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社区</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文档</h3>
+                <ul>
+                    <li><a href="../basics/quick-reference.html">快速参考</a></li>
+                    <li><a href="../basics/faq.html">常见问题</a></li>
+                    <li><a href="../basics/tutorial.html">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒体</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image2pixel 幫助</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel 標誌">
+                <h1>Image2pixel 幫助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="index.html">文檔</a></li>
+                    <li><a href="basics/faq.html">常見問題</a></li>
+                    <li><a href="basics/quick-reference.html">快速參考</a></li>
+                    <li><a href="version-history.html">版本歷史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="選擇語言">
+                    <option value="en">English</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="zh-TW" selected>繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文檔...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+       
+
+        <main class="content">
+            <h1>Image2pixel 幫助</h1>
+            
+            <p>Image2pixel 讓您可以從任何圖像創建像素藝術。從照片到圖形，您都可以將任何圖像轉換為像素藝術風格，並可自定義設置像素大小、顏色數量等參數。</p>
+            
+            <p>在這裡，您將找到幫助文檔、教程和提示，幫助您有效地使用 Image2pixel。如果您有問題，請查看<a href="basics/faq.html">常見問題</a>。</p>
+            
+            <p>要快速入門，您可以列印<a href="basics/quick-reference.html">快速參考</a>。它包含鍵盤快捷鍵和常用操作，方便隨時查閱。</p>
+            
+            <div class="section-grid">
+                <div class="section-card">
+                    <h2>基礎</h2>
+                    <p>一般概念、窗口中的元素、預期工作流程等。</p>
+                    <div class="section-content">
+                        <h3>工作區</h3>
+                        <p>Image2pixel 工作區是您進行所有像素藝術創作的地方。它包括主畫布區域、工具欄和設置面板。</p>
+                        
+                        <h3>工作流程</h3>
+                        <p>典型的工作流程包括打開圖像、調整像素大小和顏色、應用算法以及保存您的像素藝術。</p>
+                        
+                        <h3>界面</h3>
+                        <p>界面有一個頂部工具欄用於文件操作，一個側面板用於調整設置，以及主畫布區域用於查看您的作品。</p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h2>圖像處理</h2>
+                    <p>如何打開、創建和保存您的像素藝術圖像。</p>
+                    <div class="section-content">
+                        <h3>打開與創建</h3>
+                        <p>通過 文件→打開 或拖放來打開現有圖像。通過 文件→新建 創建新的空白畫布。</p>
+                        
+                        <h3>調整大小</h3>
+                        <p>使用調整大小工具調整圖像尺寸。您可以保持縱橫比或設置自定義尺寸。</p>
+                   
+                        <h3>保存</h3>
+                        <p>將您的作品保存為 PNG、GIF 或其他格式。推薦使用 PNG 格式以保留透明度。</p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h2>動畫</h2>
+                    <p>處理動畫 GIF 和透明度。</p>
+                    <div class="section-content">
+                        <h3>GIF 支持</h3>
+                        <p>導入和導出動畫 GIF。每一幀都將被像素化，同時保留動畫的時間設置。</p>
+                        
+                        <h3>透明度</h3>
+                        <p>原始圖像中的透明度在最終的像素藝術中得以保留。非常適合精靈和遊戲資源。</p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h2>算法</h2>
+                    <p>理解和使用不同的像素化算法。</p>
+                    <div class="section-content">
+                        <h3>標準算法</h3>
+                        <p>默認算法使用均勻的基於網格的像素創建經典像素藝術，可自定義塊大小和顏色數量。</p>
+                        
+                        <h3>SLIC 算法</h3>
+                        <p>創建內容感知的像素藝術，具有不規則形狀的像素簇，更好地跟隨圖像特徵和邊界。</p>
+                        
+                        <h3>顏色調色板</h3>
+                        <p>選擇內置的復古調色板或創建自定義調色板，以實現特定的視覺風格和美學效果。</p>
+                    </div>
+                </div>
+            
+                
+                <div class="section-card">
+                    <h2>自定義</h2>
+                    <p>個性化您的 Image2pixel 體驗。</p>
+                    <div class="section-content">
+                        <h3>主題</h3>
+                        <p>使用不同的主題自定義應用程序的外觀。選擇亮色、暗色或系統模式，以匹配您的偏好並減少長時間編輯過程中的眼睛疲勞。</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>鏈接</h3>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">錯誤報告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社區</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社區</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文檔</h3>
+                <ul>
+                    <li><a href="basics/quick-reference.html">快速參考</a></li>
+                    <li><a href="basics/faq.html">常見問題</a></li>
+                    <li><a href="basics/tutorial.html">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒體</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有權利。</p>
+        </div>
+    </footer>
+</body>
+</html> 

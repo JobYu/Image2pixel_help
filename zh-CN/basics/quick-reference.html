@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速参考 - Image2pixel 帮助</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <script defer src="../../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../../images/logo.png" alt="Image2pixel 标志">
+                <h1>Image2pixel 帮助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">文档</a></li>
+                    <li><a href="faq.html">常见问题</a></li>
+                    <li><a href="quick-reference.html">快速参考</a></li>
+                    <li><a href="../version-history.html">版本历史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="选择语言">
+                    <option value="en">English</option>
+                    <option value="zh-CN" selected>简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文档...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+       
+
+        <main class="content">
+            <h1>快速参考</h1>
+            
+            <p>本快速参考指南提供了 Image2pixel 中最常用操作和键盘快捷键的概述。打印此页面，在使用应用程序时可作为方便的参考。</p>
+            
+            <h2>键盘快捷键</h2>
+            
+            <h3>文件操作</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>操作</th>
+                        <th>Windows / Linux</th>
+                        <th>macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>打开文件</td>
+                        <td>Ctrl+O</td>
+                        <td>Cmd+O</td>
+                    </tr>
+                    <tr>
+                        <td>保存文件</td>
+                        <td>Ctrl+S</td>
+                        <td>Cmd+S</td>
+                    </tr>
+                    <tr>
+                        <td>退出应用程序</td>
+                        <td>Alt+F4</td>
+                        <td>Cmd+Q</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            
+            
+            <h2>界面元素</h2>
+            
+            <h3>主界面组件</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>组件</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>打开按钮</td>
+                        <td>点击从系统中打开图像或 GIF 文件</td>
+                    </tr>
+                    <tr>
+                        <td>保存按钮</td>
+                        <td>点击保存当前像素艺术结果</td>
+                    </tr>
+                    <tr>
+                        <td>块大小滑块</td>
+                        <td>调整输出图像中像素的大小</td>
+                    </tr>
+                    <tr>
+                        <td>颜色滑块</td>
+                        <td>调整输出图像中的颜色数量（2-96）</td>
+                    </tr>
+                    <tr>
+                        <td>原始预览</td>
+                        <td>显示原始输入图像</td>
+                    </tr>
+                    <tr>
+                        <td>结果预览</td>
+                        <td>显示像素化输出图像</td>
+                    </tr>
+                    <tr>
+                        <td>算法下拉菜单</td>
+                        <td>选择像素化算法（标准或 SLIC）</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>算法</h2>
+            
+            <h3>标准算法参数</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>参数</th>
+                        <th>范围</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>块大小</td>
+                        <td>1-50</td>
+                        <td>输出中每个像素块的大小</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>2-96</td>
+                        <td>输出图像中的最大颜色数量</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>SLIC 算法参数</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>参数</th>
+                        <th>范围</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>超像素大小</td>
+                        <td>8-64</td>
+                        <td>超像素区域的大小</td>
+                    </tr>
+                    <tr>
+                        <td>颜色权重</td>
+                        <td>1-40</td>
+                        <td>颜色相似度与空间接近度的权重</td>
+                    </tr>
+                    <tr>
+                        <td>迭代次数</td>
+                        <td>1-20</td>
+                        <td>SLIC 算法迭代次数</td>
+                    </tr>
+                    <tr>
+                        <td>像素步长</td>
+                        <td>1-8</td>
+                        <td>处理像素之间的步长</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>2-96</td>
+                        <td>输出图像中的最大颜色数量</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>文件格式</h2>
+            
+            <h3>支持的输入格式</h3>
+            <ul>
+                <li>PNG (.png)</li>
+                <li>JPEG/JPG (.jpg, .jpeg)</li>
+                <li>GIF (.gif)</li>
+                <li>BMP (.bmp)</li>
+                <li>WebP (.webp)</li>
+            </ul>
+            
+            <h3>支持的输出格式</h3>
+            <ul>
+                <li>PNG (.png)</li>
+                <li>GIF (.gif) - 用于动画输出</li>
+            </ul>
+            
+            <h3>调色板格式</h3>
+            <ul>
+                <li>Adobe 颜色表 (.act)</li>
+                <li>JASC 调色板 (.pal)</li>
+            </ul>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>链接</h3>
+                <ul>
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">错误报告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社区</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社区</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文档</h3>
+                <ul>
+                    <li><a href="quick-reference.html">快速参考</a></li>
+                    <li><a href="faq.html">常见问题</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒体</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+</html> 

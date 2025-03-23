@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顏色調色板 - Image2pixel 幫助</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <script defer src="../../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../../images/logo.png" alt="Image2pixel 標誌">
+                <h1>Image2pixel 幫助</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">文檔</a></li>
+                    <li><a href="../basics/faq.html">常見問題</a></li>
+                    <li><a href="../basics/quick-reference.html">快速參考</a></li>
+                    <li><a href="../version-history.html">版本歷史</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">教程</a></li>
+                </ul>
+            </nav>
+            <div class="language-container">
+                <select id="language-switcher" aria-label="選擇語言">
+                    <option value="en">English</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="zh-TW" selected>繁體中文</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索文檔...">
+                <button id="search-button">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+      
+
+        <main class="content">
+            <h1>顏色調色板</h1>
+            
+            <p>顏色調色板對於創建真實的像素藝術至關重要。Image2pixel 提供了各種方式來控制和自定義像素藝術中的顏色，從自動顏色量化到使用預定義的復古調色板。</p>
+            
+            <h2>理解顏色調色板</h2>
+            
+            <p>顏色調色板是像素藝術中使用的一組特定顏色。有限的顏色調色板是像素藝術的一個顯著特徵，讓人想起早期遊戲系統的硬件限制。使用精心設計的顏色調色板可以：</p>
+            
+            <ul>
+                <li>創建協調一致的像素藝術</li>
+                <li>模擬特定的復古遊戲系統或美學風格</li>
+                <li>減小網頁或遊戲資源的文件大小</li>
+                <li>施加藝術約束，促使更具創造性的解決方案</li>
+            </ul>
+            
+            <h2>顏色量化方法</h2>
+            
+            <h3>中位切分法（默認）</h3>
+            <p>Image2pixel 中的默認顏色量化方法是中位切分法，其工作原理為：</p>
+            <ol>
+                <li>創建圖像中所有顏色的 3D 直方圖（在 RGB 顏色空間中）</li>
+                <li>沿著範圍最大的軸遞歸地分割顏色空間，直到達到所需的顏色桶數量</li>
+                <li>計算每個桶的平均顏色，創建最終的顏色調色板</li>
+            </ol>
+            <p>這種方法確保了圖像中最常見和視覺上最重要的顏色得到保留。</p>
+            
+            <h3>K-均值法</h3>
+            <p>K-均值量化選項使用聚類分析找到最能代表圖像的顏色中心。它通常能產生更準確的顏色表示，但計算速度可能較慢。它對於具有微妙漸變的圖像特別有用。</p>
+            
+            <h2>自定義調色板</h2>
+            
+            <h3>導入自定義調色板</h3>
+            <p>您可以將自己的自定義顏色調色板導入到 Image2pixel 中。支持的格式包括：</p>
+            <ul>
+                <li><strong>Adobe 顏色表 (.act)</strong> - 由 Photoshop 和其他 Adobe 產品使用</li>
+            </ul>
+            
+            <p>導入自定義調色板的步驟：</p>
+            <ol>
+                <li>轉到"顏色"面板</li>
+                <li>點擊"導入調色板"</li>
+                <li>選擇您的調色板文件</li>
+                <li>如果提示，為您的調色板命名</li>
+            </ol>
+            
+            <h3>像素藝術的色彩理論</h3>
+            <p>創建像素藝術的自定義調色板時，請考慮以下原則：</p>
+            <ul>
+                <li><strong>有限範圍</strong> - 真實的像素藝術通常使用的顏色比您認為必要的要少</li>
+                <li><strong>一致的飽和度</strong> - 飽和度水平相似的顏色能很好地配合在一起</li>
+                <li><strong>色彩和諧</strong> - 考慮互補、相似或三元色彩方案</li>
+                <li><strong>對比度</strong> - 確保相鄰元素之間有足夠的對比度</li>
+                <li><strong>可讀性</strong> - 對於遊戲精靈尤為重要，因為清晰度至關重要</li>
+            </ul>
+            
+            <h2>示例工作流程</h2>
+            
+            <h3>創建 GameBoy 風格的藝術</h3>
+            <ol>
+                <li>從預設選項中選擇 GameBoy 調色板</li>
+                <li>將塊大小設置為 2-4 以獲得更高分辨率的 GameBoy 風格，或 8-12 以獲得更粗大的像素</li>
+                <li>處理您的圖像</li>
+                <li>考慮啟用抖動以獲得更平滑的過渡</li>
+            </ol>
+            
+            <h3>創建現代像素藝術</h3>
+            <ol>
+                <li>創建一個包含 12-20 種精心選擇的顏色的自定義調色板</li>
+                <li>包含適當的顏色漸變以進行陰影處理</li>
+                <li>使用小塊大小（2-4）以獲得詳細的像素藝術</li>
+                <li>處理您的圖像</li>
+                <li>考慮對關鍵細節進行手動修飾</li>
+            </ol>
+            
+            <h3>重現 16 位遊戲機風格</h3>
+            <ol>
+                <li>選擇 16 位時代的調色板，如 SNES 或 Genesis</li>
+                <li>使用 32-64 種顏色以獲得更豐富的圖形</li>
+                <li>根據所需的細節水平將塊大小設置為 2-6</li>
+                <li>處理您的圖像</li>
+                <li>考慮對漸變使用輕微的抖動</li>
+            </ol>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>鏈接</h3>
+                <ul>
+                    <li><a href="../index.html">首頁</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">錯誤報告</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社區</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam 社區</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>文檔</h3>
+                <ul>
+                    <li><a href="../basics/quick-reference.html">快速參考</a></li>
+                    <li><a href="../basics/faq.html">常見問題</a></li>
+                    <li><a href="../basics/tutorial.html">教程</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>社交媒體</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. 保留所有權利。</p>
+        </div>
+    </footer>
+</body>
+</html> 
