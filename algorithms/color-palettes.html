@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palettes - Image2pixel Help</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">Documentation</a></li>
+                    <li><a href="../basics/faq.html">FAQ</a></li>
+                    <li><a href="../basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                </li>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Color Palettes</h1>
+            
+            <p>Color palettes are essential for creating authentic pixel art. Image2pixel offers various ways to control and customize the colors in your pixel art, from automatic color quantization to using predefined retro palettes.</p>
+            
+            <h2>Understanding Color Palettes</h2>
+            
+            <p>A color palette is a set of specific colors used in your pixel art. Limited color palettes are a defining characteristic of pixel art, reminiscent of the hardware limitations of early gaming systems. Using a well-designed color palette can:</p>
+            
+            <ul>
+                <li>Create cohesive and harmonious pixel art</li>
+                <li>Emulate specific retro gaming systems or aesthetic styles</li>
+                <li>Reduce file size for web or game assets</li>
+                <li>Enforce artistic constraints that can lead to more creative solutions</li>
+            </ul>
+            
+            <h2>Color Quantization Methods</h2>
+            
+            <h3>Median Cut (Default)</h3>
+            <p>The default color quantization method in Image2pixel is Median Cut, which works by:</p>
+            <ol>
+                <li>Creating a 3D histogram of all colors in the image (in RGB color space)</li>
+                <li>Recursively splitting the color space along the axis with the largest range until the desired number of color buckets is reached</li>
+                <li>Computing the average color for each bucket to create the final color palette</li>
+            </ol>
+            <p>This method ensures that the most common and visually important colors in the image are preserved.</p>
+            
+            <h3>K-Means</h3>
+            <p>The K-Means quantization option uses cluster analysis to find color centers that best represent the image. It often produces more accurate color representation but can be slower to compute. It's especially useful for images with subtle gradients.</p>
+            
+            <h2>Custom Palettes</h2>
+            
+            <h3>Importing Custom Palettes</h3>
+            <p>You can import your own custom color palettes into Image2pixel. Supported formats include:</p>
+            <ul>
+                <li><strong>Adobe Color Table (.act)</strong> - Used by Photoshop and other Adobe products</li>
+            </ul>
+            
+            <p>To import a custom palette:</p>
+            <ol>
+                <li>Go to the Colors panel</li>
+                <li>Click "Import Palette"</li>
+                <li>Select your palette file</li>
+                <li>Name your palette if prompted</li>
+            </ol>
+            
+            <h3>Color Theory for Pixel Art</h3>
+            <p>When creating custom palettes for pixel art, consider these principles:</p>
+            <ul>
+                <li><strong>Limited range</strong> - Authentic pixel art often uses fewer colors than you might think necessary</li>
+                <li><strong>Consistent saturation</strong> - Colors with similar saturation levels work well together</li>
+                <li><strong>Color harmony</strong> - Consider complementary, analogous, or triadic color schemes</li>
+                <li><strong>Contrast</strong> - Ensure enough contrast between adjacent elements</li>
+                <li><strong>Readability</strong> - Especially important for game sprites where clarity is crucial</li>
+            </ul>
+            
+            <h2>Example Workflows</h2>
+            
+            <h3>Creating GameBoy-style Art</h3>
+            <ol>
+                <li>Select the GameBoy palette from the preset options</li>
+                <li>Set Block Size to 2-4 for higher resolution GameBoy style, or 8-12 for more chunky pixels</li>
+                <li>Process your image</li>
+                <li>Consider enabling dithering for smoother transitions</li>
+            </ol>
+            
+            <h3>Creating Modern Pixel Art</h3>
+            <ol>
+                <li>Create a custom palette with 12-20 carefully selected colors</li>
+                <li>Include proper color ramps for shading</li>
+                <li>Use a small Block Size (2-4) for detailed pixel art</li>
+                <li>Process your image</li>
+                <li>Consider manual touch-ups for key details</li>
+            </ol>
+            
+            <h3>Recreating 16-bit Console Style</h3>
+            <ol>
+                <li>Select a 16-bit era palette like SNES or Genesis</li>
+                <li>Use 32-64 colors for richer graphics</li>
+                <li>Set Block Size to 2-6 depending on desired detail level</li>
+                <li>Process your image</li>
+                <li>Consider light dithering for gradients</li>
+            </ol>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="basics/faq.html">FAQ</a></li>
+                    <li><a href="basics/tutorial.html">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

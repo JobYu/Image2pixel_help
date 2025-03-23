@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Reference - Image2pixel Help</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">Documentation</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                </li>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Quick Reference</h1>
+            
+            <p>This quick reference guide provides an overview of the most common operations and keyboard shortcuts in Image2pixel. Print this page for a handy reference while using the application.</p>
+            
+            <h2>Keyboard Shortcuts</h2>
+            
+            <h3>File Operations</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Windows / Linux</th>
+                        <th>macOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Open File</td>
+                        <td>Ctrl+O</td>
+                        <td>Cmd+O</td>
+                    </tr>
+                    <tr>
+                        <td>Save File</td>
+                        <td>Ctrl+S</td>
+                        <td>Cmd+S</td>
+                    </tr>
+                    <tr>
+                        <td>Exit Application</td>
+                        <td>Alt+F4</td>
+                        <td>Cmd+Q</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            
+            
+            <h2>UI Elements</h2>
+            
+            <h3>Main Interface Components</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Open Button</td>
+                        <td>Click to open an image or GIF file from your system</td>
+                    </tr>
+                    <tr>
+                        <td>Save Button</td>
+                        <td>Click to save the current pixel art result</td>
+                    </tr>
+                    <tr>
+                        <td>Block Size Slider</td>
+                        <td>Adjust the size of pixels in the output image</td>
+                    </tr>
+                    <tr>
+                        <td>Colors Slider</td>
+                        <td>Adjust the number of colors in the output image (2-96)</td>
+                    </tr>
+                    <tr>
+                        <td>Original Preview</td>
+                        <td>Shows the original input image</td>
+                    </tr>
+                    <tr>
+                        <td>Result Preview</td>
+                        <td>Shows the pixelated output image</td>
+                    </tr>
+                    <tr>
+                        <td>Algorithm Dropdown</td>
+                        <td>Select the pixelation algorithm (Standard or SLIC)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Algorithms</h2>
+            
+            <h3>Standard Algorithm Parameters</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Range</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Block Size</td>
+                        <td>1-50</td>
+                        <td>Size of each pixel block in the output</td>
+                    </tr>
+                    <tr>
+                        <td>Colors</td>
+                        <td>2-96</td>
+                        <td>Maximum number of colors in the output image</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>SLIC Algorithm Parameters</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Range</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Superpixel Size</td>
+                        <td>8-64</td>
+                        <td>Size of superpixel regions</td>
+                    </tr>
+                    <tr>
+                        <td>Color Weight</td>
+                        <td>1-40</td>
+                        <td>Weight of color similarity vs. spatial proximity</td>
+                    </tr>
+                    <tr>
+                        <td>Iterations</td>
+                        <td>1-20</td>
+                        <td>Number of SLIC algorithm iterations</td>
+                    </tr>
+                    <tr>
+                        <td>Pixel Stride</td>
+                        <td>1-8</td>
+                        <td>Stride between processed pixels</td>
+                    </tr>
+                    <tr>
+                        <td>Colors</td>
+                        <td>2-96</td>
+                        <td>Maximum number of colors in the output image</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>File Formats</h2>
+            
+            <h3>Supported Input Formats</h3>
+            <ul>
+                <li>PNG (.png)</li>
+                <li>JPEG/JPG (.jpg, .jpeg)</li>
+                <li>GIF (.gif)</li>
+                <li>BMP (.bmp)</li>
+                <li>WebP (.webp)</li>
+            </ul>
+            
+            <h3>Supported Output Formats</h3>
+            <ul>
+                <li>PNG (.png)</li>
+                <li>GIF (.gif) - for animated outputs</li>
+            </ul>
+            
+            <h3>Palette Formats</h3>
+            <ul>
+                <li>Adobe Color Table (.act)</li>
+                <li>JASC Palette (.pal)</li>
+            </ul>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="quick-reference.html">Quick Reference</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIC Algorithm - Image2pixel Help</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">Documentation</a></li>
+                    <li><a href="../basics/faq.html">FAQ</a></li>
+                    <li><a href="../basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                </li>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>SLIC Algorithm</h1>
+            
+            <p>The SLIC (Simple Linear Iterative Clustering) algorithm is an advanced pixelation algorithm in Image2pixel that creates content-aware pixel art. Unlike the standard algorithm which creates uniform grid-based pixels, SLIC generates organic, shape-respecting pixel clusters.</p>
+            
+            <h2>How It Works</h2>
+            
+            <p>The SLIC algorithm works through these main steps:</p>
+            
+            <ol>
+                <li><strong>Superpixel Generation</strong>: The algorithm divides the image into irregular-shaped "superpixels" that adhere to natural boundaries in the image.</li>
+                <li><strong>Iterative Refinement</strong>: The superpixels are iteratively refined to better match the image content.</li>
+                <li><strong>Color Assignment</strong>: Each superpixel is assigned a representative color based on the pixels within it.</li>
+                <li><strong>Color Quantization</strong>: The number of colors is reduced to match the selected Color Count using a weighted color averaging technique.</li>
+            </ol>
+            
+            <p>The result is a stylized, content-aware pixel art that preserves important image features while still creating a distinct pixel art style.</p>
+            
+            <h2>Parameters</h2>
+            
+            <h3>Region Size</h3>
+            <p>Controls the approximate size of each superpixel region. Larger values create larger, more blocky regions, while smaller values create more detailed superpixels.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Effect</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5-15</td>
+                        <td>Small superpixels, high detail preservation</td>
+                        <td>Detailed art, complex scenes</td>
+                    </tr>
+                    <tr>
+                        <td>16-30</td>
+                        <td>Medium superpixels, good balance</td>
+                        <td>General pixel art, portraits</td>
+                    </tr>
+                    <tr>
+                        <td>31-50</td>
+                        <td>Large superpixels, abstract appearance</td>
+                        <td>Stylized art, abstract effects</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Compactness</h3>
+            <p>Controls how much the algorithm prioritizes regular shapes versus adhering to color boundaries. Higher values create more uniform superpixels, while lower values create superpixels that better follow image features.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Effect</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-10</td>
+                        <td>Highly irregular shapes, strong feature adherence</td>
+                        <td>Images with distinct edges and features</td>
+                    </tr>
+                    <tr>
+                        <td>11-30</td>
+                        <td>Balanced shape regularity</td>
+                        <td>Most images, general purpose</td>
+                    </tr>
+                    <tr>
+                        <td>31-50</td>
+                        <td>More uniform, grid-like superpixels</td>
+                        <td>Creating a more traditional pixel art look</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Iterations</h3>
+            <p>Controls how many refinement passes the algorithm performs. More iterations lead to more precise superpixels but increase processing time.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Effect</th>
+                        <th>Processing Speed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-3</td>
+                        <td>Quick approximation, less refined superpixels</td>
+                        <td>Fast</td>
+                    </tr>
+                    <tr>
+                        <td>4-7</td>
+                        <td>Balanced refinement</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>8-10</td>
+                        <td>Highly refined superpixels</td>
+                        <td>Slow</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Colors</h3>
+            <p>Determines the maximum number of colors in the output image.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Effect</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2-8</td>
+                        <td>Highly limited color palette</td>
+                        <td>Simple, iconic pixel art</td>
+                    </tr>
+                    <tr>
+                        <td>9-32</td>
+                        <td>Moderate color palette</td>
+                        <td>Balanced pixel art with good color variety</td>
+                    </tr>
+                    <tr>
+                        <td>33-96</td>
+                        <td>Rich color palette</td>
+                        <td>Complex scenes, gradients, detailed pixel art</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Transparency Support</h2>
+            
+            <p>The SLIC algorithm supports transparency in images. Transparent regions in the original image will remain transparent in the processed result, making it suitable for creating pixel art sprites and assets with transparent backgrounds.</p>
+            
+            <h2>Example Usage</h2>
+            
+            <h3>Creating Organic-Looking Pixel Art</h3>
+            <p>For natural-looking landscapes and organic subjects:</p>
+            <ul>
+                <li>Region Size: 20-25</li>
+                <li>Compactness: 15</li>
+                <li>Iterations: 5</li>
+                <li>Colors: 24-32</li>
+            </ul>
+            
+            <h3>Creating Abstract Pixel Art</h3>
+            <p>For stylized, abstract pixel art:</p>
+            <ul>
+                <li>Region Size: 35-45</li>
+                <li>Compactness: 5</li>
+                <li>Iterations: 8</li>
+                <li>Colors: 12-16</li>
+            </ul>
+            
+            <h3>Creating Detailed Character Portraits</h3>
+            <p>For character portraits with good detail preservation:</p>
+            <ul>
+                <li>Region Size: 10-15</li>
+                <li>Compactness: 20</li>
+                <li>Iterations: 6</li>
+                <li>Colors: 24-48</li>
+            </ul>
+            
+            <h2>Comparison with Standard Algorithm</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>SLIC Algorithm</th>
+                        <th>Standard Algorithm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pixel Shape</td>
+                        <td>Irregular, content-aware shapes</td>
+                        <td>Uniform, grid-based squares</td>
+                    </tr>
+                    <tr>
+                        <td>Detail Preservation</td>
+                        <td>Adaptive based on image content</td>
+                        <td>Uniform across the image</td>
+                    </tr>
+                    <tr>
+                        <td>Edge Preservation</td>
+                        <td>Better preserves important edges</td>
+                        <td>May lose edge details in high-contrast areas</td>
+                    </tr>
+                    <tr>
+                        <td>Parameter Complexity</td>
+                        <td>More complex (4 parameters)</td>
+                        <td>Simple (2 parameters)</td>
+                    </tr>
+                    <tr>
+                        <td>Processing Speed</td>
+                        <td>Slower (especially with higher iteration counts)</td>
+                        <td>Faster</td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>Artistic pixel art, organic subjects</td>
+                        <td>Classic pixel art, game sprites</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Tips for Best Results</h2>
+            
+            <ul>
+                <li>Start with Region Size of 20, Compactness of 20, and 5 Iterations as a baseline.</li>
+                <li>Decrease Region Size for more detail, increase for a more abstract look.</li>
+                <li>Decrease Compactness for more irregular, organic shapes that follow color boundaries.</li>
+                <li>Increase Iterations for more refined results, but be aware of increased processing time.</li>
+                <li>Try combining SLIC-processed images with Standard algorithm results for interesting hybrid effects.</li>
+            </ul>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="basics/faq.html">FAQ</a></li>
+                    <li><a href="basics/tutorial.html">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

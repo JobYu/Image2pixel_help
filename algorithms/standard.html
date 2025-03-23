@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Algorithm - Image2pixel Help</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">Documentation</a></li>
+                    <li><a href="../basics/faq.html">FAQ</a></li>
+                    <li><a href="../basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                </li>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Standard Algorithm</h1>
+            
+            <p>The Standard algorithm is the default pixelation algorithm in Image2pixel. It uses a combination of downsampling and color quantization techniques to produce classic pixel art from any image.</p>
+            
+            <h2>How It Works</h2>
+            
+            <p>The Standard algorithm works in two main steps:</p>
+            
+            <ol>
+                <li><strong>Downsampling (Pixelation)</strong>: The original image is divided into blocks of pixels based on the selected Block Size. Each block is then replaced with a single color determined by the average color of all pixels in that block.</li>
+                <li><strong>Color Quantization</strong>: The algorithm reduces the number of colors in the image to match the selected Color Count using the Median Cut algorithm, ensuring that the most important colors are preserved.</li>
+            </ol>
+            
+            <p>This approach creates the classic pixel art look with uniform, blocky pixels and a limited color palette.</p>
+            
+            <h2>Parameters</h2>
+            
+            <h3>Block Size</h3>
+            <p>The Block Size parameter controls the size of each pixel in the output image. Larger values create a more pixelated, blocky look with fewer details, while smaller values preserve more details but create a less distinct pixel art appearance.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Effect</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-4</td>
+                        <td>Subtle pixelation, high detail preservation</td>
+                        <td>Detailed sprites, complex textures</td>
+                    </tr>
+                    <tr>
+                        <td>5-12</td>
+                        <td>Moderate pixelation, good balance of detail and pixel art style</td>
+                        <td>Most pixel art, game assets</td>
+                    </tr>
+                    <tr>
+                        <td>13-32</td>
+                        <td>Strong pixelation, highly stylized appearance</td>
+                        <td>Low-resolution styles, retro effects</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Colors</h3>
+            <p>The Colors parameter determines the maximum number of colors in the output image. This affects the color depth and visual complexity of the pixel art.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Effect</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2-8</td>
+                        <td>Highly limited color palette, high contrast</td>
+                        <td>1-bit or 3-bit style pixel art, GameBoy-inspired artwork</td>
+                    </tr>
+                    <tr>
+                        <td>9-32</td>
+                        <td>Moderate color palette, good balance of simplicity and color depth</td>
+                        <td>16-color console style, SNES-era pixel art</td>
+                    </tr>
+                    <tr>
+                        <td>33-96</td>
+                        <td>Rich color palette, maintains more color nuance</td>
+                        <td>Detailed pixel art, more modern pixel art styles</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Color Quantization</h2>
+            
+            <p>The Standard algorithm uses Median Cut color quantization to reduce the number of colors in the image. This algorithm works by:</p>
+            
+            <ol>
+                <li>Creating a 3D histogram of all colors in the image (in RGB color space)</li>
+                <li>Recursively splitting the color space along the axis with the largest range until the desired number of color buckets is reached</li>
+                <li>Computing the average color for each bucket to create the final color palette</li>
+                <li>Mapping each pixel to the closest color in the palette</li>
+            </ol>
+            
+            <p>This approach ensures that the most common and visually important colors in the image are preserved, while similar colors are merged together.</p>
+            
+            <h2>Transparency Support</h2>
+            
+            <p>As of version 1.3.2, the Standard algorithm fully supports transparency in images and GIFs. Transparent pixels in the input are preserved during processing, allowing you to create pixel art with transparent backgrounds or partially transparent elements.</p>
+            
+            <p>The algorithm detects pixels with an alpha value below 10 (on a scale of 0-255) and treats them as fully transparent, preserving them throughout the pixelation and color quantization process.</p>
+            
+            <h2>Example Usage</h2>
+            
+            <h3>Creating Classic Pixel Art Characters</h3>
+            <p>For character sprites and avatars, try these settings:</p>
+            <ul>
+                <li>Block Size: 8-12</li>
+                <li>Colors: 16-24</li>
+            </ul>
+            
+            <h3>Creating 8-bit Style Landscapes</h3>
+            <p>For retro-style landscapes and backgrounds:</p>
+            <ul>
+                <li>Block Size: 6-10</li>
+                <li>Colors: 12-20</li>
+            </ul>
+            
+            <h3>Creating Minimalist Icons</h3>
+            <p>For simple, recognizable icons:</p>
+            <ul>
+                <li>Block Size: 4-8</li>
+                <li>Colors: 4-8</li>
+            </ul>
+            
+            <h2>Comparison with SLIC Algorithm</h2>
+            
+            <p>The Standard algorithm differs from the SLIC algorithm in several key ways:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Standard Algorithm</th>
+                        <th>SLIC Algorithm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pixel Shape</td>
+                        <td>Uniform, grid-based squares</td>
+                        <td>Irregular, content-aware shapes</td>
+                    </tr>
+                    <tr>
+                        <td>Detail Preservation</td>
+                        <td>Uniform across the image</td>
+                        <td>Adaptive based on image content</td>
+                    </tr>
+                    <tr>
+                        <td>Parameter Complexity</td>
+                        <td>Simple (2 parameters)</td>
+                        <td>More complex (5 parameters)</td>
+                    </tr>
+                    <tr>
+                        <td>Processing Speed</td>
+                        <td>Faster</td>
+                        <td>Slower (especially with higher iteration counts)</td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>Classic pixel art, retro game aesthetics</td>
+                        <td>Modern pixel art, stylized abstractions, complex scenes</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Tips for Best Results</h2>
+            
+            <ul>
+                <li><strong>Start with simple images</strong>: Images with clear shapes and high contrast tend to produce better pixel art results.</li>
+                <li><strong>Experiment with Block Size</strong>: The Block Size has the most dramatic effect on the appearance of your pixel art. Try different values to find the right level of detail.</li>
+                <li><strong>Adjust Colors based on content</strong>: Images with many different colors may need a higher color count to look good, while simpler images can often look better with fewer colors.</li>
+                <li><strong>Consider the destination</strong>: If your pixel art is for a game or app with specific technical constraints, adjust your settings accordingly.</li>
+                <li><strong>Use custom palettes</strong>: For more control over the final look, consider using a custom color palette to ensure your pixel art matches a specific aesthetic.</li>
+            </ul>
+            
+            <p>For more advanced customization options, see the <a href="color-palettes.html">Color Palettes</a> documentation.</p>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="basics/faq.html">FAQ</a></li>
+                    <li><a href="basics/tutorial.html">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

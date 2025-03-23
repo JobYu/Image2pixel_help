@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Image2pixel Help</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">Documentation</a></li>
+                    <li><a href="../basics/faq.html">FAQ</a></li>
+                    <li><a href="../basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                </li>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Frequently Asked Questions</h1>
+            
+            <p>This FAQ answers the most common questions about Image2pixel. If you can't find the answer to your question here, please check the detailed documentation or contact support.</p>
+            
+            <h2>General Questions</h2>
+            
+            <h3>What is Image2pixel?</h3>
+            <p>Image2pixel is a professional pixel art generator that lets you convert any image or GIF to pixel art style. It offers various algorithms, customizable parameters, and supports features like transparency and custom color palettes.</p>
+            
+            <h3>What platforms does Image2pixel support?</h3>
+            <p>Image2pixel runs on Windows, and macOS as a desktop application.</p>
+            
+            <h3>Is Image2pixel free?</h3>
+            <p>Image2pixel has both a free web version and a paid full version. The free version has some restrictions, such as limited export functionality and custom palette loading. The full version unlocks all features and future updates.</p>
+            
+            <h2>Features and Capabilities</h2>
+            
+            <h3>What file types can I import?</h3>
+            <p>Image2pixel supports importing PNG, JPEG/JPG, GIF, BMP, and WebP files. For animated content, GIF format is supported.</p>
+            
+            <h3>What file types can I export?</h3>
+            <p>You can export pixel art as PNG files for static images and GIF files for animations. Both formats support transparency.</p>
+            
+            <h3>Does Image2pixel support transparency?</h3>
+            <p>Yes, as of version 1.3.2, Image2pixel fully supports transparency in both static images and animated GIFs. This allows you to create pixel art with transparent backgrounds or elements. See the <a href="../basics/transparency.html">Transparency</a> documentation for more details.</p>
+            
+            <h3>What's the difference between the Standard and SLIC algorithms?</h3>
+            <p>The Standard algorithm creates classic pixel art with uniform, grid-based pixels and is faster. The SLIC algorithm creates content-aware pixel art with irregular shapes based on image features, which can preserve more detail but is more complex and slower. See the <a href="../algorithms/standard.html">Standard Algorithm</a> and <a href="../algorithms/slic.html">SLIC Algorithm</a> pages for detailed comparisons.</p>
+            
+            <h2>Using the Application</h2>
+            
+            <h3>How do I adjust the pixel size?</h3>
+            <p>Use the "Block Size" slider in the main interface to adjust the pixel size. lower values create larger, more blocky pixels, while Higher values create smaller pixels with more detail.</p>
+            
+            <h3>How do I adjust the number of colors?</h3>
+            <p>Use the "Colors" slider to set the maximum number of colors in the output. The range is from 2 to 96 colors. Fewer colors create a more simplified, classic pixel art look, while more colors preserve more detail and nuance.</p>
+            
+            <h3>How do I load a custom color palette?</h3>
+            <p>Click the "Load Palette" button and select an Adobe Color Table (.act) file. The application will then use these colors for the pixelation process. Note that this feature is only available in the full version.</p>
+            
+            <h2>Animated GIFs</h2>
+            
+            <h3>How do I process an animated GIF?</h3>
+            <p>Simply open an animated GIF file using the "Open" button. The application will automatically detect it as an animation and process all frames. You can adjust settings and preview the result before saving.</p>
+            
+            <h3>Can I control the animation speed?</h3>
+            <p>The output GIF will maintain the same frame timing as the original GIF. There is currently no interface to adjust frame timing, but this may be added in future versions.</p>
+            
+            <h3>Why does my GIF processing take a long time?</h3>
+            <p>Processing animated GIFs is more resource-intensive than static images because each frame must be individually processed. The processing time depends on the number of frames, the resolution, and your computer's specifications. For complex GIFs with many frames, it's normal for processing to take several seconds or even minutes.</p>
+            
+            <h2>Troubleshooting</h2>
+            
+            <h3>The application crashes when processing large images/GIFs. What can I do?</h3>
+            <p>Try reducing the input image/GIF resolution before processing, or try the following:</p>
+            <ul>
+                <li>Close other memory-intensive applications</li>
+                <li>Update to the latest version of Image2pixel</li>
+                <li>For GIFs, try reducing the number of frames or the resolution</li>
+            </ul>
+            
+            <h3>Why won't my image save?</h3>
+            <p>Several factors could cause saving issues:</p>
+            <ul>
+                <li>Using the demo version (which has saving restrictions)</li>
+                <li>Insufficient permissions for the save location</li>
+                <li>File is open in another application</li>
+                <li>Disk space is full</li>
+            </ul>
+            <p>Try saving to a different location (like your Documents folder).</p>
+            
+            <h3>How do I reset the application preferences?</h3>
+            <p>You can reset the application preferences by Commond+Q / Ctrl+Q. This can be helpful if the application is behaving unexpectedly or if you want to start with default settings.</p>
+            
+            <h2>Updates and Support</h2>
+            
+            <h3>How do I update to the latest version?</h3>
+            <p>Image2pixel will automatically check for updates on startup if you have an internet connection. You can also manually check for updates via the Help menu. If you downloaded through Steam, updates will be handled through the Steam client.</p>
+            
+            <h3>Where can I get help or report bugs?</h3>
+            <p>You can get help or report bugs through the following channels:</p>
+            <ul>
+                <li>The <a href="https://steamcommunity.com/app/3475120">Steam Community hub</a> (if you purchased through Steam)</li>
+            </ul>
+            
+            <h3>Will there be more features added in the future?</h3>
+            <p>Yes, Image2pixel is actively developed and new features are planned for future updates. Follow our social media to stay updated on development progress.</p>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="quick-reference.html">Quick Reference</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image2pixel Help</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="index.html">Documentation</a></li>
+                    <li><a href="basics/faq.html">FAQ</a></li>
+                    <li><a href="basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Image2pixel Help</h1>
+            
+            <p>Image2pixel lets you create pixel art from any image. From photographs to graphics, you can convert any image to pixel art style with customizable settings for pixel size, color count, and more.</p>
+            
+            <p>Here you will find help documentation, tutorials, and tips to help you use Image2pixel effectively. If you have questions, check out the <a href="basics/faq.html">Frequently Asked Questions</a>.</p>
+            
+            <p>To get started quickly, you can print the <a href="basics/quick-reference.html">Quick Reference</a>. It contains keyboard shortcuts and common operations, so it's handy to have nearby.</p>
+            
+            <div class="section-grid">
+                <div class="section-card">
+                    <h2>Basics</h2>
+                    <p>General concepts, elements in the window, expected workflow, etc.</p>
+                    <div class="section-content">
+                        <h3>Workspace</h3>
+                        <p>The Image2pixel workspace is where all your pixel art creation happens. It includes the main canvas area, toolbars, and settings panels.</p>
+                        
+                        <h3>Workflow</h3>
+                        <p>A typical workflow includes opening an image, adjusting pixel size and colors, applying the algorithm, and saving your pixel art.</p>
+                        
+                        <h3>Interface</h3>
+                        <p>The interface has a top toolbar for file operations, a side panel for adjusting settings, and the main canvas area to view your work.</p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h2>Image Processing</h2>
+                    <p>How to open, create, and save your pixel art images.</p>
+                    <div class="section-content">
+                        <h3>Open & Create</h3>
+                        <p>Open existing images via File → Open or drag and drop. Create new blank canvases via File → New.</p>
+                        
+                        <h3>Resize</h3>
+                        <p>Adjust image dimensions using the resize tool. You can maintain aspect ratio or set custom dimensions.</p>
+                   
+                        <h3>Save</h3>
+                        <p>Save your work as PNG, GIF, or other formats. PNG is recommended for preserving transparency.</p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h2>Animation</h2>
+                    <p>Working with animated GIFs and transparency.</p>
+                    <div class="section-content">
+                        <h3>GIF Support</h3>
+                        <p>Import and export animated GIFs. Each frame will be pixelated while preserving animation timing.</p>
+                        
+                        <h3>Transparency</h3>
+                        <p>Transparency in your original images is preserved in the final pixel art. Great for sprites and game assets.</p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h2>Algorithms</h2>
+                    <p>Understanding and using the different pixelation algorithms.</p>
+                    <div class="section-content">
+                        <h3>Standard Algorithm</h3>
+                        <p>The default algorithm creates classic pixel art using uniform grid-based pixels with customizable block size and color count.</p>
+                        
+                        <h3>SLIC Algorithm</h3>
+                        <p>Creates content-aware pixel art with irregular-shaped pixel clusters that better follow image features and boundaries.</p>
+                        
+                        <h3>Color Palettes</h3>
+                        <p>Choose from built-in retro palettes or create custom ones to achieve specific visual styles and aesthetics.</p>
+                    </div>
+                </div>
+            
+                
+                <div class="section-card">
+                    <h2>Customization</h2>
+                    <p>Personalize your Image2pixel experience.</p>
+                    <div class="section-content">
+                        <h3>Themes</h3>
+                        <p>Customize the application's appearance with different themes. Choose from Light, Dark, or System mode to match your preference and reduce eye strain during long editing sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="basics/faq.html">FAQ</a></li>
+                    <li><a href="basics/tutorial.html">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

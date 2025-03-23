@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparency - Image2pixel Help</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script defer src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Image2pixel Logo">
+                <h1>Image2pixel Help</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="../index.html">Documentation</a></li>
+                    <li><a href="../basics/faq.html">FAQ</a></li>
+                    <li><a href="../basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../version-history.html">Version History</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation...">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul class="toc">
+                <li><a href="index.html">Overview</a></li>
+                <li>
+                    <span class="category">Basics</span>
+                </li>
+                <li>
+                    <span class="category">Image Processing</span>
+                </li>
+                <li>
+                    <span class="category">Animation</span>
+                </li>
+                <li>
+                    <span class="category">Algorithms</span>
+                    <ul>
+                        <li><a href="algorithms/standard.html">Standard Algorithm</a></li>
+                        <li><a href="algorithms/slic.html">SLIC Algorithm</a></li>
+                        <li><a href="algorithms/color-palettes.html">Color Palettes</a></li>
+                    </ul>
+                </li>
+             
+                <li>
+                    <span class="category">Customization</span>
+                </li>
+                <li>
+                    <span class="category">Troubleshooting</span>
+                    <ul>
+                        <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                  
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Transparency Support</h1>
+            
+            <p>Image2pixel v1.3.2 and later fully supports transparency in both static images and animated GIFs. This allows you to create pixel art with transparent backgrounds or partially transparent elements, which is essential for game development, sprite creation, and other applications.</p>
+            
+            <h2>Transparency in Images</h2>
+            
+            <p>When processing images with transparent areas (like PNGs with alpha channels), Image2pixel preserves the transparency throughout the pixelation process.</p>
+            
+            <h3>How It Works</h3>
+            
+            <ol>
+                <li><strong>Transparency Detection</strong>: The application identifies pixels with an alpha value below 10 (on a scale of 0-255) and marks them as fully transparent.</li>
+                <li><strong>Processing Preservation</strong>: During the pixelation and color quantization processes, transparent pixels are skipped and maintained in the output.</li>
+                <li><strong>Canvas Clearing</strong>: Before drawing each frame or image, the canvas is cleared to ensure transparent areas remain transparent.</li>
+            </ol>
+            
+            <h3>Use Cases for Transparent Images</h3>
+            
+            <ul>
+                <li><strong>Game Sprites</strong>: Create character sprites, items, or UI elements with transparent backgrounds that can be placed on various game backgrounds.</li>
+                <li><strong>Icons</strong>: Design pixel art icons with transparency for use in applications, websites, or operating systems.</li>
+                <li><strong>Layered Compositions</strong>: Create individual pixel art elements that can be combined and arranged in layers in other applications.</li>
+            </ul>
+            
+            <h2>Transparency in GIFs</h2>
+            
+            <p>Image2pixel also supports transparency in animated GIFs, allowing you to create animated pixel art with transparent backgrounds or elements.</p>
+            
+            <h3>How GIF Transparency Works</h3>
+            
+            <ol>
+                <li><strong>Processing Each Frame</strong>: Each frame of the GIF is processed to preserve transparent pixels, just like with static images.</li>
+                <li><strong>GIF Encoder Configuration</strong>: The GIF encoder is configured with <code>setTransparent(true)</code> to enable transparency support.</li>
+                <li><strong>PNG Format for Intermediate Steps</strong>: During processing, frames are temporarily converted to PNG format to maintain the alpha channel information.</li>
+            </ol>
+            
+            <p>Note that the GIF format only supports binary transparency (fully transparent or fully opaque), so partially transparent pixels in the original image will be converted to either fully transparent or fully opaque in the output GIF.</p>
+            
+            <h3>Tips for Working with Transparent GIFs</h3>
+            
+            <ul>
+                <li><strong>Clean Source Files</strong>: Start with clean source GIFs or PNGs that have well-defined transparent areas.</li>
+                <li><strong>Binary Transparency</strong>: Remember that GIFs only support binary transparency, so design with this limitation in mind.</li>
+                <li><strong>Check Preview</strong>: Always check the preview to ensure transparency is preserved as expected before saving.</li>
+                <li><strong>Background Testing</strong>: Test your transparent GIFs on different colored backgrounds to ensure the transparency works correctly.</li>
+            </ul>
+            
+            <h2>Algorithm Support for Transparency</h2>
+            
+            <p>Both the Standard and SLIC algorithms in Image2pixel support transparency:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Transparency Support</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standard</td>
+                        <td>Full</td>
+                        <td>Preserves transparent pixels throughout the processing pipeline</td>
+                    </tr>
+                    <tr>
+                        <td>SLIC</td>
+                        <td>Full</td>
+                        <td>May handle edges between transparent and opaque areas differently due to the superpixel approach</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Technical Implementation</h2>
+            
+            <p>For those interested in the technical details, transparency support is implemented through several key enhancements:</p>
+            
+            <h3>In the Standard Algorithm</h3>
+            
+            <ul>
+                <li>The <code>medianCutQuantization</code> function now detects and preserves transparent pixels (where alpha &lt; 10).</li>
+                <li>Transparent pixels are skipped during color sampling and quantization.</li>
+                <li>Transparency is maintained when applying the color palette to the output image.</li>
+            </ul>
+            
+            <h3>In the Pixelit.js Core</h3>
+            
+            <ul>
+                <li>The <code>pixelate</code> method now clears canvases before drawing to preserve alpha.</li>
+                <li>The <code>convertPalette</code> method detects and skips transparent pixels.</li>
+                <li>The <code>draw</code> method includes clearing to ensure transparency is maintained.</li>
+            </ul>
+            
+            <h3>In GIF Processing</h3>
+            
+            <ul>
+                <li>A call to <code>clearRect</code> was added before putting image data to preserve transparent areas.</li>
+                <li>The <code>toDataURL</code> format was changed to PNG to maintain transparency during intermediate steps.</li>
+                <li><code>setTransparent(true)</code> was added to the GIF encoder configuration.</li>
+            </ul>
+            
+            <h2>Troubleshooting Transparency Issues</h2>
+            
+            <h3>Common Problems and Solutions</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problem</th>
+                        <th>Possible Cause</th>
+                        <th>Solution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Transparency not preserved</td>
+                        <td>Using an older version of Image2pixel</td>
+                        <td>Update to v1.3.2 or later</td>
+                    </tr>
+                    <tr>
+                        <td>Partially transparent areas become fully opaque</td>
+                        <td>GIF format limitation</td>
+                        <td>Use PNG format for static images with partial transparency</td>
+                    </tr>
+                    <tr>
+                        <td>Transparent pixels have a white or black border</td>
+                        <td>Edge detection issues</td>
+                        <td>Try adjusting the Block Size or Color Count</td>
+                    </tr>
+                    <tr>
+                        <td>Transparency looks different in different applications</td>
+                        <td>Application-specific rendering</td>
+                        <td>Test in your target application/platform</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Examples and Use Cases</h2>
+            
+            <h3>Game Development</h3>
+            <p>Create sprite sheets with transparent backgrounds for seamless integration into game engines. Common use cases include:</p>
+            <ul>
+                <li>Character sprites with transparent backgrounds</li>
+                <li>Item icons and power-ups</li>
+                <li>UI elements and indicators</li>
+                <li>Environmental objects like trees, clouds, or decorations</li>
+            </ul>
+            
+            <h3>Web Design</h3>
+            <p>Create pixel art elements for websites:</p>
+            <ul>
+                <li>Custom cursors with transparency</li>
+                <li>Animated loading indicators</li>
+                <li>Pixel art icons for navigation</li>
+                <li>Decorative elements with transparency</li>
+            </ul>
+            
+            <h3>Social Media and Content Creation</h3>
+            <p>Design unique pixel art for online content:</p>
+            <ul>
+                <li>Animated avatars with transparent backgrounds</li>
+                <li>Stickers and emotes for Discord, Twitch, etc.</li>
+                <li>Overlay elements for streaming</li>
+                <li>Transparent pixel art frames and borders</li>
+            </ul>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="https://steamcommunity.com/games/3475120">Bug Report</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://steamcommunity.com/games/3475120">Steam Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="../basics/quick-reference.html">Quick Reference</a></li>
+                    <li><a href="../basics/faq.html">FAQ</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">Tutorial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://x.com/pixel32">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@PixelBearTeacher">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024-2025 Image2pixel Pixel Bear Teacher. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
